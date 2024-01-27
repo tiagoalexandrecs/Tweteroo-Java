@@ -1,10 +1,13 @@
 package com.api.tweteroo.Controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,8 +41,19 @@ public class TweetsController {
     }
 
      @GetMapping
-    public ResponseEntity<Object> getUsers() {
+    public ResponseEntity<Object> getTweets() {
         return ResponseEntity.status(HttpStatus.OK).body(tweetsService.findAll());
+    }
+
+    @GetMapping("users/{userId}") 
+    public ResponseEntity<Object> getTweetsByUserId(@PathVariable("userId") Long userId) {
+        Optional<List <TweetModel> > tweets = tweetsService.findByUserId(userId);
+
+        if (tweets.isPresent()) {
+            return ResponseEntity.status(HttpStatus.OK).body(tweets);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("There is not an user under this Id");
+        }
     }
 
     
