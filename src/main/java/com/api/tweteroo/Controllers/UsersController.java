@@ -23,9 +23,9 @@ import jakarta.validation.Valid;
 @RequestMapping("/users")
 public class UsersController {
     
-    UserService userService;
+     UserService userService;
 
-    public  void UserController(UserService userService) {
+    public void UserController(UserService userService) {
         this.userService = userService;
     }
 
@@ -53,5 +53,6 @@ public class UsersController {
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(user);
     }
+
 
 }
