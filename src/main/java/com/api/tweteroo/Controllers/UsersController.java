@@ -23,9 +23,9 @@ import jakarta.validation.Valid;
 @RequestMapping("/users")
 public class UsersController {
     
-     UserService userService;
+     final UserService userService;
 
-    public void UserController(UserService userService) {
+     UsersController(UserService userService) {
         this.userService = userService;
     }
 

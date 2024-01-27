@@ -25,9 +25,9 @@ import jakarta.validation.Valid;
 @RequestMapping("/tweets")
 public class TweetsController {
 
-    TweetsService tweetsService;
+    final TweetsService tweetsService;
 
-    public TweetsController(TweetsService tweetsService) {
+    TweetsController(TweetsService tweetsService) {
         this.tweetsService = tweetsService;
     }
 
