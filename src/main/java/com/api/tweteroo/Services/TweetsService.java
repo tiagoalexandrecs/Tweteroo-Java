@@ -22,7 +22,7 @@ public class TweetsService {
     }
 
     public Optional<TweetModel> save(TweetDto dto) {
-        Optional<UserModel> user = userRepository.findById(dto.getUserID());
+        Optional<UserModel> user = userRepository.findById(dto.getUserId());
 
         if (user.isPresent()){
             TweetModel tweet = new TweetModel(dto,user.get());
